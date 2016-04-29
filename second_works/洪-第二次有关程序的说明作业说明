@@ -1,0 +1,13 @@
+1.Makefile文件，由Makefile和server.c,client.c构成。
+       执行make -m Makefile可以成功编译出server和client两个可执行文件.
+2.cp复制命令的实现：代码文件Cp.c，可执行文件Cp.
+       使用方法是：./Cp file1 file2  (将file1复制到file2)
+3.目录查看的实现：代码文件printdir.c,可执行文件printdir.
+      使用方法是：./printdir [目录路径]
+4.文件切割（一分为二）：代码文件cutf.c，可执行文件cutf 
+       使用方法：./cutf file file1 file2 (把file等量分为file1和file2两个文件)
+  文件整合（合二为一）：代码文件mergef.c 可执行文件mergef 
+       使用方法：./mergef file1 file2 file (把ffile1和file2两个文件整合成file一个文件)
+5.socket通信实现ECHO:代码文件server.c，client.c;可执行文件server,client
+       使用方法：先执行服务器端./server,再执行客户端./client
+
