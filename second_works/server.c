@@ -18,34 +18,28 @@ int main()
  int server_len,client_len;
  int i;
  struct sockaddr_in server_address,client_address;
- server_sockfd = socket(AF_INET,SOCK_STREAM,0);
 
+ server_sockfd = socket(AF_INET,SOCK_STREAM,0);
  server_address.sin_family = AF_INET;
  server_address.sin_addr.s_addr = htonl(INADDR_ANY);
  server_address.sin_port = htons(9734);
  server_len = sizeof(server_address);
-
  bind(server_sockfd,(struct sockaddr *)&server_address,server_len);
 
  listen(server_sockfd,5);
+
  while(1){
- char ch;
- printf("server waiting...\n");
 
- client_len = sizeof(client_address);
- client_sockfd = accept(server_sockfd,(struct sockaddr *)&client_address,&client_len);
+   char ch;
+   printf("server waiting...\n");
+   client_len = sizeof(client_address);
+   client_sockfd = accept(server_sockfd,(struct sockaddr *)&client_address,&client_len);
 
- printf("client's IP:%s\n",inet_ntoa(client_address.sin_addr)); 
+   printf("client's IP:%s\n",inet_ntoa(client_address.sin_addr)); 
+   read(client_sockfd,&ch,256);
+      write(client_sockfd,&ch,256);
 
- Ip = open(inet_ntoa(client_address.sin_addr),O_RDONLY);
-
- read(Ip,inet_ntoa(client_address.sin_addr),32);
- write(client_sockfd,inet_ntoa(client_address.sin_addr),32);
- //lseek(client_sockfd,0,2);
- read(client_sockfd,&ch,256);
- write(client_sockfd,&ch,256);
- close(client_sockfd);
-}
+                   }
 }
 
 
